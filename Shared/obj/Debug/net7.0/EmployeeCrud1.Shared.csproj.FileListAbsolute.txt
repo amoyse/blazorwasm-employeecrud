@@ -1,0 +1,12 @@
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/bin/Debug/net7.0/EmployeeCrud1.Shared.deps.json
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/bin/Debug/net7.0/EmployeeCrud1.Shared.dll
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/bin/Debug/net7.0/EmployeeCrud1.Shared.pdb
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.csproj.AssemblyReference.cache
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.AssemblyInfoInputs.cache
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.AssemblyInfo.cs
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.csproj.CoreCompileInputs.cache
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.dll
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/refint/EmployeeCrud1.Shared.dll
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/EmployeeCrud1.Shared.pdb
+/home/alex/Desktop/2year/ccse/EmployeeCrud1/Shared/obj/Debug/net7.0/ref/EmployeeCrud1.Shared.dll

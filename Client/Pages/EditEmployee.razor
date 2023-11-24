@@ -1,0 +1,83 @@
+@page "/employee"
+@page "/employee/{Id:int}"
+@using EmployeeCrud1.Shared
+@using System.Net
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+
+@if (Id is null)
+{
+    <PageTitle>Add a New Employee</PageTitle>
+    <h3>Add a New Employee</h3>
+}
+else
+{
+    <PageTitle>Edit @emp.FullName</PageTitle>
+    <h3>Edit @emp.FullName</h3>
+}
+
+<EditForm Model="emp" OnSubmit="HandleSubmit">
+    <div>
+        <label for="Code">Code</label>
+        <InputText id="Code" @bind-Value="emp.Code" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="FullName">FullName</label>
+        <InputText id="FullName" @bind-Value="emp.FullName" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="Address">Address</label>
+        <InputText id="Address" @bind-Value="emp.Address" class="form-control"></InputText>
+    </div>
+    <div>
+        <label for="JoiningDate">JoiningDate</label>
+        <InputDate id="JoiningDate" @bind-Value="emp.JoiningDate" class="form-control"></InputDate>
+    </div> <br/>
+    <button type="submit" class="btn btn-primary">Save</button>
+    
+    @if (Id is not null)
+    {
+        <button type="button" class="btn btn-danger" @onclick="DeleteEmployee">Delete</button>
+    }
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    Employee emp = new Employee { FullName = "New Employee"};
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id is not null)
+        {
+            var result = await Http.GetFromJsonAsync<Employee>($"api/employee/{Id}");
+            if (result is not null)
+            {
+                emp = result;
+            }
+        }
+    }
+
+    async Task HandleSubmit()
+    {
+        if (Id is null)
+        {
+            await Http.PostAsJsonAsync("api/employee", emp);
+        }
+        else
+        {
+            await Http.PutAsJsonAsync($"api/employee/{Id}", emp);
+        }
+        NavigationManager.NavigateTo("/employees");
+    }
+
+    async Task DeleteEmployee()
+    {
+        await Http.DeleteAsync($"api/employee/{Id}");
+        NavigationManager.NavigateTo("/employees");
+    }
+    
+}

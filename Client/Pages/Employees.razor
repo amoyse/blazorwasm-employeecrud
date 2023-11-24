@@ -1,0 +1,68 @@
+@page "/employees"
+@using EmployeeCrud1.Shared
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Employees</h3>
+
+<button @onclick="AddEmployee" class="btn btn-primary">Add Employee</button>
+<br/><br/>
+
+@if (emps is null)
+{
+    <span>Loading Employees...</span>
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            
+            <th>Full Name</th>
+            <th>Address</th>
+            <th>Joining Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in emps)
+            {
+                <tr>
+                    <td width="5%">@emp.Id</td>
+                    <td width="5%">@emp.Code</td>
+                    <td width="10%">@emp.FullName</td>
+                    <td width="10%">@emp.Address</td>
+                    <td width="5%">@emp.JoiningDate</td>
+                    <td><button @onclick="(() => EditEmployee(emp.Id))" class="btn btn-primary">Edit</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    
+    List<Employee>? emps;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await Http.GetFromJsonAsync<List<Employee>>("/api/employee");
+        if (result != null)
+        {
+            emps = result;
+        }
+    }
+
+    void AddEmployee()
+    {
+        NavigationManager.NavigateTo("/employee");
+    }
+
+    void EditEmployee(int id)
+    {
+        NavigationManager.NavigateTo($"/employee/{id}");
+    }
+
+}
